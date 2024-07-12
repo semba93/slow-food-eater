@@ -1,0 +1,12 @@
+.eating-view-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .eating-gif {
+    width: 300px;
+    height: auto;
+  }
+  

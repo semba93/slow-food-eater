@@ -1,23 +1,41 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import StartButton from './StartButton';
+import EatingView from './EatingView';
+import StopEatingView from './StopEatingView';
+import MealFinishedButton from './MealFinishedButton';
 
-function App() {
+const App = () => {
+  const [started, setStarted] = useState(false);
+  const [eating, setEating] = useState(false);
+  const [timer, setTimer] = useState(10);
+
+  useEffect(() => {
+    let interval = null;
+    if (started && eating && timer > 0) {
+      interval = setInterval(() => {
+        setTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+    } else if (started && eating && timer === 0) {
+      setEating(false);
+      setTimer(5);
+    } else if (started && !eating && timer > 0) {
+      interval = setInterval(() => {
+        setTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+    } else if (started && !eating && timer === 0) {
+      setEating(true);
+      setTimer(10);
+    }
+    return () => clearInterval(interval);
+  }, [started, eating, timer]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!started && <StartButton onClick={() => { setStarted(true); setEating(true); }} />}
+      {started && eating && <EatingView timer={timer} />}
+      {started && !eating && <StopEatingView timer={timer} />}
+      {started && <MealFinishedButton onClick={() => { setStarted(false); setEating(false); setTimer(10); }} />}
     </div>
   );
 }

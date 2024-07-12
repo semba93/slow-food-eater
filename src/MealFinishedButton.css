@@ -1,0 +1,21 @@
+.meal-finished-button-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .meal-finished-button {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #ff0000;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px #888888;
+    transition: transform 0.2s;
+  }
+  
+  .meal-finished-button:hover {
+    transform: scale(1.1);
+  }
+  
