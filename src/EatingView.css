@@ -1,12 +1,20 @@
 .eating-view-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .eating-gif {
-    width: 300px;
-    height: auto;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.eating-gif {
+  width: 300px;
+  height: auto;
+}
+
+.quote {
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 1rem;
+  max-width: 600px;
+  text-align: center;
+  font-style: italic;
+}
